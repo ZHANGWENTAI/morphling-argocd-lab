@@ -1,234 +1,72 @@
-typemeta:
-  kind: ""
-  apiversion: ""
-objectmeta:
-  name: ""
-  generatename: ""
-  namespace: ""
-  selflink: ""
-  uid: ""
-  resourceversion: ""
-  generation: 0
-  creationtimestamp: "0001-01-01T00:00:00Z"
-  deletiontimestamp: null
-  deletiongraceperiodseconds: null
-  labels: {}
-  annotations: {}
-  ownerreferences: []
-  finalizers: []
-  clustername: ""
-  managedfields: []
+
+apiVersion: morphling.kubedl.io/v1alpha1
+kind: ProfilingExperiment
+metadata:
+  name: demo_model-v1.0.0-exp
 spec:
-  version: v1.0.0
-  modelname: demo_model
-  creationtime: 15:59:05 2024/10/30
-  associatedexperimentspec:
-    tunableparameters:
-    - category: resource
+  objective:
+    type: maximize
+    objectiveMetricName: qps
+  algorithm:
+    algorithmName: grid
+  parallelism: 824648062484
+  maxNumTrials: 824648062480
+    tunableParameters:
+    - category: "env"
       parameters:
-      - name: CPU
-        parametertype: discrete
-        feasiblespace:
-          max: ""
-          min: ""
-          list:
-          - 500m
-          - 2000m
-          step: ""
-    - category: env
-      parameters:
-      - name: BATCH_SIZE
-        parametertype: discrete
-        feasiblespace:
-          max: ""
-          min: ""
-          list:
-          - "1"
-          - "2"
-          - "4"
-          - "8"
-          step: ""
-    objective:
-      type: maximize
-      objectivemetricname: qps
-    algorithm:
-      algorithmname: grid
-      algorithmsettings: []
-    maxnumtrials: 3
-    parallelism: 4
-    requesttemplate: ""
-    clienttemplate:
-      objectmeta:
-        name: ""
-        generatename: ""
-        namespace: ""
-        selflink: ""
-        uid: ""
-        resourceversion: ""
-        generation: 0
-        creationtimestamp: "0001-01-01T00:00:00Z"
-        deletiontimestamp: null
-        deletiongraceperiodseconds: null
-        labels: {}
-        annotations: {}
-        ownerreferences: []
-        finalizers: []
-        clustername: ""
-        managedfields: []
-      spec:
-        parallelism: null
-        completions: null
-        activedeadlineseconds: null
-        backofflimit: null
-        selector: null
-        manualselector: null
-        template:
-          objectmeta:
-            name: ""
-            generatename: ""
-            namespace: ""
-            selflink: ""
-            uid: ""
-            resourceversion: ""
-            generation: 0
-            creationtimestamp: "0001-01-01T00:00:00Z"
-            deletiontimestamp: null
-            deletiongraceperiodseconds: null
-            labels: {}
-            annotations: {}
-            ownerreferences: []
-            finalizers: []
-            clustername: ""
-            managedfields: []
-          spec:
-            volumes: []
-            initcontainers: []
-            containers: []
-            ephemeralcontainers: []
-            restartpolicy: ""
-            terminationgraceperiodseconds: null
-            activedeadlineseconds: null
-            dnspolicy: ""
-            nodeselector: {}
-            serviceaccountname: ""
-            deprecatedserviceaccount: ""
-            automountserviceaccounttoken: null
-            nodename: ""
-            hostnetwork: false
-            hostpid: false
-            hostipc: false
-            shareprocessnamespace: null
-            securitycontext: null
-            imagepullsecrets: []
-            hostname: ""
-            subdomain: ""
-            affinity: null
-            schedulername: ""
-            tolerations: []
-            hostaliases: []
-            priorityclassname: ""
-            priority: null
-            dnsconfig: null
-            readinessgates: []
-            runtimeclassname: null
-            enableservicelinks: null
-            preemptionpolicy: null
-            overhead: {}
-            topologyspreadconstraints: []
-        ttlsecondsafterfinished: null
-    servicepodtemplate:
-      typemeta:
-        kind: ""
-        apiversion: ""
-      objectmeta:
-        name: ""
-        generatename: ""
-        namespace: ""
-        selflink: ""
-        uid: ""
-        resourceversion: ""
-        generation: 0
-        creationtimestamp: "0001-01-01T00:00:00Z"
-        deletiontimestamp: null
-        deletiongraceperiodseconds: null
-        labels: {}
-        annotations: {}
-        ownerreferences: []
-        finalizers: []
-        clustername: ""
-        managedfields: []
+        - parameterType: discrete
+          name: "BATCH_SIZE"
+          feasibleSpace:
+            list:
+              - "1"
+              - "2"
+              - "4"
+              - "8"
+
+  clientTemplate:
+    spec:
       template:
-        objectmeta:
-          name: ""
-          generatename: ""
-          namespace: ""
-          selflink: ""
-          uid: ""
-          resourceversion: ""
-          generation: 0
-          creationtimestamp: "0001-01-01T00:00:00Z"
-          deletiontimestamp: null
-          deletiongraceperiodseconds: null
-          labels: {}
-          annotations: {}
-          ownerreferences: []
-          finalizers: []
-          clustername: ""
-          managedfields: []
         spec:
-          volumes: []
-          initcontainers: []
-          containers: []
-          ephemeralcontainers: []
-          restartpolicy: ""
-          terminationgraceperiodseconds: null
-          activedeadlineseconds: null
-          dnspolicy: ""
-          nodeselector: {}
-          serviceaccountname: ""
-          deprecatedserviceaccount: ""
-          automountserviceaccounttoken: null
-          nodename: ""
-          hostnetwork: false
-          hostpid: false
-          hostipc: false
-          shareprocessnamespace: null
-          securitycontext: null
-          imagepullsecrets: []
-          hostname: ""
-          subdomain: ""
-          affinity: null
-          schedulername: ""
-          tolerations: []
-          hostaliases: []
-          priorityclassname: ""
-          priority: null
-          dnsconfig: null
-          readinessgates: []
-          runtimeclassname: null
-          enableservicelinks: null
-          preemptionpolicy: null
-          overhead: {}
-          topologyspreadconstraints: []
-    serviceprogressdeadline: null
-status:
-  testcompletiontime: "0001-01-01T00:00:00Z"
-  associatedexperimentstatus:
-    conditions: []
-    currentoptimaltrial:
-      tunableparameters: []
-      objectivemetricsobserved: []
-    trialresultlist: []
-    completiontime: null
-    starttime: null
-    runningtriallist: []
-    pendingtriallist: []
-    failedtriallist: []
-    succeededtriallist: []
-    killedtriallist: []
-    trialstotal: 0
-    trialssucceeded: 0
-    trialskilled: 0
-    trialspending: 0
-    trialsrunning: 0
-    trialsfailed: 0
+          containers:
+          - name: client
+            image: kubedl/morphling-grpc-client:demo
+            resources:
+              requests:
+                cpu: 4
+                memory: "4Gi"
+              limits:
+                cpu: 10
+                memory: "10Gi"
+            command: ["python3"]
+            args: ["morphling_client.py"]
+            imagePullPolicy: IfNotPresent
+          restartPolicy: Never
+      backoffLimit: 10
+  servicePodTemplate:
+    template:
+      spec:
+        containers:
+          - name: service-container
+            image: kubedl/morphling-grpc-server:latest
+            imagePullPolicy: IfNotPresent
+            env:
+              - name: MODEL_NAME
+                value: "demo_model"
+            resources:
+              requests:
+                cpu: 10
+                memory: "8Gi"
+                nvidia.com/gpu: "1"
+              limits:
+                cpu: 20
+                memory: "16Gi"
+                nvidia.com/gpu: "1"
+            ports:
+              - containerPort: 8500
+            volumeMounts:
+              - name: model-cache
+                mountPath: /workspace/.kubedl_model_cache
+        volumes:
+          - name: model-cache
+            emptyDir: {}
+        restartPolicy: Always
