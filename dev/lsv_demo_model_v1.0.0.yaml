@@ -9,8 +9,8 @@ spec:
     objectiveMetricName: qps
   algorithm:
     algorithmName: grid
-  parallelism: 824644096132
-  maxNumTrials: 824644096128
+  parallelism: 824638525044
+  maxNumTrials: 824638525040
     tunableParameters:
     - category: "resource"
       parameters:
@@ -20,6 +20,12 @@ spec:
             list:
               - "500m"
               - "2000m"
+        - parameterType: discrete
+          name: "Memory"
+          feasibleSpace:
+            list:
+              - "4Gi"
+              - "10Gi"
     - category: "env"
       parameters:
         - parameterType: discrete
